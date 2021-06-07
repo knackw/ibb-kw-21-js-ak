@@ -1,0 +1,23 @@
+{
+
+	"thumbs" : [ 
+					"../images/thumbs/pic1s.jpg",
+					"../images/thumbs/pic2s.jpg",
+					"../images/thumbs/pic3s.jpg",
+					"../images/thumbs/pic4s.jpg",
+					"../images/thumbs/pic5s.jpg",
+					"../images/thumbs/pic6s.jpg",
+					"../images/thumbs/pic7s.jpg",
+					"../images/thumbs/pic8s.jpg"
+				] ,
+	"big" : [
+					"../images/big/Chrysanthemum.jpg",
+					"../images/big/Desert.jpg",
+					"../images/big/Hydrangeas.jpg",
+					"../images/big/Jellyfish.jpg",
+					"../images/big/Koala.jpg",
+					"../images/big/Lighthouse.jpg",
+					"../images/big/Penguins.jpg",
+					"../images/big/Tulips.jpg"
+				]
+}

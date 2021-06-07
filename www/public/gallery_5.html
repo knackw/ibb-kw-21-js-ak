@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.thumbs img { border:2px solid green ; }
+			.thumbs img.activ { border:2px solid red ; }
+			.big img { 	width:300px; 
+						display:none; } 
+			.big img.activ { display:block; }
+		</style>
+		<script>
+		
+		
+		(function(){
+		
+			var imgNr = 0;
+			var srcThumbs ;
+			var srcBig ;
+			var thumbs ;		// HTML-Liste aller Thumb IMG
+			var bigs ;			// HTML-Liste aller big IMG
+			function setBigImg( nr )
+			{
+				if( bigs[nr].getAttribute( "src" ) == "" )
+				{
+					bigs[nr].setAttribute( "src" , getSrc( nr ) ) ;
+				}
+				thumbs[nr].className = "activ" ;
+				thumbs[imgNr].className = "" ;
+				
+				bigs[nr].className = "activ" ;
+				bigs[imgNr].className = "" ;
+				
+				
+				imgNr = nr ;
+			}
+			function getSrc( nr )
+			{
+				return srcBig[nr] ;
+			}
+			function nextImg()
+			{
+				if( imgNr + 1 < 8 )
+					setBigImg( imgNr + 1 );
+				else
+					setBigImg( 0 );
+			}
+			function prevImg()
+			{
+				if( imgNr - 1 >= 0 )
+					setBigImg( imgNr - 1 )
+				else
+					setBigImg( 7 );
+			}
+			function createThumbs()
+			{
+				var divThumbs = document.querySelector( ".thumbs" );
+				var newImg ;
+				
+				for( var i = 0 ; i < srcThumbs.length ; i++ )
+				{
+					newImg = document.createElement( "img" );
+					newImg.setAttribute( "src" , srcThumbs[i] );
+					newImg.setAttribute( "alt" , "" );
+					newImg.nr = i ;
+					newImg.addEventListener( "click" , function(){
+						setBigImg( this.nr ); 
+					} );
+					divThumbs.appendChild( newImg );
+				}
+			}
+			function createBig()
+			{
+				var divBig = document.querySelector( ".big" );
+				var newImg ;
+				
+				for( var i = 0 ; i < srcBig.length ; i++ )
+				{
+					newImg = document.createElement( "img" );
+					newImg.setAttribute( "src" , "" );
+					newImg.setAttribute( "alt" , "" );
+					divBig.appendChild( newImg );
+				}
+			}
+			function handleResponse( data )
+			{
+				data = JSON.parse( data );
+				
+				srcThumbs = data.thumbs ;
+				srcBig = data.big;
+				
+				createThumbs();
+				createBig();
+				thumbs = document.querySelectorAll( ".thumbs img" );
+				bigs = document.querySelectorAll( ".big img" );
+			}	
+			function sndReq( url , verarbeiten  )
+			{
+				var ajax = new XMLHttpRequest();
+				ajax.addEventListener( "readystatechange", function(){
+					if( ajax.readyState == 4 )
+					{
+						if( ajax.status >= 200 && ajax.status < 300 )
+						{
+							verarbeiten( ajax.responseText )
+						}
+						else
+						{
+							alert( ajax.status + " " + ajax.statusText );
+						}
+					}
+				} );
+				ajax.open( "GET" , url , true );
+				ajax.send( null);
+			}	
+			function init()
+			{
+				var btns = document.querySelectorAll( ".ctrls button" );
+				btns[0].addEventListener( "click", prevImg ) ;
+				btns[1].addEventListener( "click", nextImg ) ;
+				sndReq( "images.json" , handleResponse )
+			}
+			
+			window.addEventListener( "load" , init );
+
+		})();
+		
+		
+		
+
+		
+		</script>
+	</head>
+	<body>
+		<div class="ctrls" >
+			<button>prev</button>
+			<button>next</button>
+		</div>
+		<div class="thumbs" ></div>
+		<div class="big" ></div>
+	</body>
+</html>

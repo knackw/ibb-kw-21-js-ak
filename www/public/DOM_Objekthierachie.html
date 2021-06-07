@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM</title>
+		<style></style>
+	</head>
+	<body>	
+
+<pre>
+		
+	--- DOM Objekthierachie ---	
+	
+	screen
+	navigator
+	
+	
+	window
+		
+		event
+		history
+		location
+		localStorage
+		sessionStorage
+		document
+		
+			all[]
+			links[]
+			images[]
+			applets[]
+			forms[]
+			
+				elements[]
+				
+					options[]
+		
+	
+	--------------------------
+	
+	screen
+	
+		screen.heigth
+		screen.width
+		
+	navigator
+	
+		navigator.userAgent
+		
+		
+	window
+	
+	
+		myVar
+		myFun()
+		
+		name
+		innerHeight
+		innerWith
+		console
+				.log()
+				.error()
+		
+		alert()
+		parseInt()
+		parseFloat()
+		eval()
+		isNaN()
+		getComputedStyle()
+		
+		setInterval()
+		setTimeout()
+		
+	window.event
+	
+		event.pageX
+		event.pageY
+		event.key
+		
+	window.history
+	
+		history.back()
+		history.forward()
+		history.go( anzahl )
+		
+	window.location
+	
+		location.href
+		
+	window.localStorage
+	
+		localStorage.setItem()
+		localStorage.getItem()
+		
+		
+	window.document
+	
+		document.title
+		document.referer
+		document.cookie
+		document.URL
+		
+		document.write()
+		document.getElementById()
+		document.getElementsByName()[]
+		document.getElementsByTagName()[]
+		document.getElementsByClassName()[]
+		
+		document.querySelector()
+		document.querySelectorAll()[]
+		
+		document.createElement()
+		document.createTextNode()
+		
+		
+		window.document.forms[]
+		
+			document.forms.length
+			
+				document.forms[].elements[]
+				
+					document.forms[].elements.length
+					
+					document.forms[].elements[].options
+					
+						document.forms[].elements[].options.length
+					
+					
+			
+	// CSS eines HTML-Elements herausfinden mit getComputedStyle
+		
+	if( window.getComputedStyle )
+	{
+		var cssObj = getComputedStyle( document.getElementById( "xy" ) )
+		var farbe = cssObj.getPropertyValue(color) ;
+	}
+	else
+	{
+		var farbe = document.getElementById( "xy" ).style.color ;
+	
+	}
+		
+
+</pre>	
+
+
+	</body>
+</html>

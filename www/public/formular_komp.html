@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style> #msg { position : absolute ; top: 10px; left : 330px; }</style>
+		<script>
+		
+			function setMsg( text )
+			{
+				document.getElementById( "msg" ).innerHTML += text + "<br>" ;
+			}
+
+			function versenden()
+			{
+				setMsg( "versenden" );
+				//alert( "versenden" );
+				//return false ;
+			}
+			
+			function clickSubmit()
+			{
+				setMsg( "clickSubmit" );
+				//return false;
+			}
+			
+			function zuruecksetzen()
+			{
+				setMsg( "zurücksetzen" );
+				//return false;
+			}
+			function clickReset()
+			{
+				setMsg( "clickReset" );
+				//return false;
+			}
+			
+			//---------------------------------------------------
+			
+			// Events selber auslösen	( tiggern )
+			
+			
+			function doSubmit()
+			{
+				document.anmeldung.submit() ;	// das Formular wird versendet.  Sonst NIX !!!
+												// Es wird KEIN submit-eventhandler(onsubmit) ausgeführt.
+			}
+			
+			function doReset()
+			{
+				document.anmeldung.reset() ;	// das Formlar wird zurückgesetzt
+												// der reset-eventhander wird ausgeführt
+												// d.h. ich kann das Zurücksetzen auch verhindern
+			}
+		
+			function doClickSubmit()
+			{
+				document.anmeldung.senden.click() ;
+			}
+			
+			function doClickReset()
+			{
+				document.anmeldung.myReset.click() ;
+			}
+			
+			function doSelect()
+			{
+				document.anmeldung.nachname.select();
+			}
+			
+			function doFocus()
+			{
+				///document.anmeldung.nachname.focus();
+				document.anmeldung.alter.focus();
+			}
+			
+			//------------------------------------------------
+			
+			
+			function setTabIndex()
+			{
+					document.anmeldung.vorname.tabIndex = 2 ;
+					document.anmeldung.nachname.tabIndex = 1 ;
+					document.anmeldung.mail.tabIndex = 3 ;
+					document.anmeldung.alter.tabIndex = 4 ;
+			}
+			
+			function doDisabled()
+			{
+				document.anmeldung.vorname.disabled = true ;
+				document.anmeldung.anrede[0].disabled = true ;
+				document.anmeldung.senden.disabled = true ;
+			}
+		
+			function doEnabled()
+			{
+				for( var i = 0 ; i < document.anmeldung.elements.length ; i++ )
+				{
+					document.anmeldung.elements[i].disabled = false ;
+				}
+			}
+			
+			function info()
+			{
+				var anzahl = document.anmeldung.elements.length ;
+				setMsg( "Anzahl Elements : " + anzahl );
+				
+				anzahl = document.anmeldung.obst.options.length ;
+				setMsg( "Anzahl Obst : " + anzahl );
+			}
+			
+			
+			
+			
+			/* */
+		</script>
+	</head>
+	<body>
+	
+		<form name="anmeldung" action="weiter.php" method="GET" onsubmit="return versenden();" onreset="return zuruecksetzen();" oninput="" >
+		
+			<p>Anrede: 
+				Frau:  <input type="radio" name="anrede" value="frau"  onchange="setMsg('Anrede Frau geändert');" >
+				Herr:  <input type="radio" name="anrede" value="herr"  onchange="setMsg('Anrede Herr geändert');" >
+				Firma: <input type="radio" name="anrede" value="firma" onchange="setMsg('Anrede Firma geändert');" onclick="return false ; " >
+			</p>
+			
+			<p>Vorname: <input type="text" name="vorname"  
+								onkeydown="setMsg('keydown');" 
+								onkeypress="setMsg('keypress');" 
+								onkeyup="setMsg('keyup');" >
+			</p>
+			<p>Nachname: <input type="text" name="nachname" 
+								onselect="setMsg('Nachname select');" 
+								onfocus="setMsg('Nachname focus');"
+								onclick="setMsg('Nachname click');"
+								>
+			</p>
+			<p>Alter: <input type="number" name="alter" 
+								onfocus="setMsg('Alter focus');"
+								onfocusin="setMsg('Alter focusin');"
+								onfocusout="setMsg('Alter focusout');"
+								onblur="setMsg('Alter blur');"
+								onchange="setMsg('Alter change');" >
+			</p>
+			<p>Email: <input type="email" name="mail" ></p>
+			
+			<textarea onselect="setMsg('Text selektiert')" >abcdefg</textarea>
+		
+			<p>
+				Hobbys:
+				Sport: 	<input type="checkbox" name="hobby" value="sport"	onchange="setMsg('Hobby Sport geändert');" >
+				Kino: 	<input type="checkbox" name="hobby" value="kino" 	onchange="setMsg('Hobby Kino geändert');"  disabled >
+				PC: 	<input type="checkbox" name="hobby" value="pc" 		onchange="setMsg('Hobby PC geändert');" >
+				Lesen: 	<input type="checkbox" name="hobby" value="lesen" 	onchange="setMsg('Hobby Lesen geändert');" onclick="return false ; " >
+			</p>
+			
+			<p>
+				Obst:
+				<select name="obst" onchange="setMsg('Obst geändert') ;" size="5" >
+					<option>Apfel</option>
+					<option selected >Birne</option>
+					<option>Kirsche</option>
+				</select>
+			</p>
+		
+			<p>
+				<input type="submit" name="senden" value="SENDEN" 	onclick="return clickSubmit();" >
+																	
+				<input type="reset"  name="myReset"  value="RESET"  onclick="return clickReset();" >
+				
+				<input type="button" onclick="setMsg('btnClick');" onmousedown="setMsg('btnDown');" onmouseup="setMsg('btnUp');" value="BTN" >
+			</p>
+			
+
+		</form>
+		
+		<a href="javascript:doSubmit(); " >doSubmit</a>
+		<a href="javascript:doReset(); " >doReset</a>
+		<a href="javascript:doClickSubmit(); " >doClickSubmit</a>
+		<a href="javascript:doClickReset(); " >doClickReset</a>
+		<a href="javascript:doSelect(); " >doSelect</a>
+		<a href="javascript:doFocus(); " >doFocus</a>
+		
+		<a href="javascript:setTabIndex(); " >setTabIndex</a>
+		<a href="javascript:doDisabled(); " >doDisabled</a>
+		<a href="javascript:doEnabled(); " >doEnabled</a>
+		
+		
+		<a href="javascript:info(); " >info</a>
+		
+		<div id="msg" ></div>
+	</body>
+</html>

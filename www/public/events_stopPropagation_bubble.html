@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+					border : 2px solid green ;
+					padding : 20px ;
+				}
+		</style>
+		
+		<script>
+			function clickBody()
+			{
+				document.getElementById("msg").innerHTML += "1 " ;
+			}
+			function clickDiv( ev )
+			{
+				ev.stopPropagation();
+				document.getElementById("msg").innerHTML += "2 " ;
+			}
+			function clickButton1()
+			{
+				document.getElementById("msg").innerHTML += "3 " ;
+			}
+			function clickButton2( ev )
+			{
+				//ev.stopPropagation();	// verhindert das Weiterreichen des Events 
+				document.getElementById("msg").innerHTML += "4 " ;
+			}
+		
+		</script>
+		
+	</head>
+	<body onclick="clickBody();">
+	
+		<div onclick="clickDiv( event );">
+		
+			<button onclick="clickButton1();" >btn 1</button>
+			<button onclick="clickButton2( event );" >btn 2</button>
+		
+		</div>
+		
+		<div id="msg" ></div>
+		
+	</body>
+</html>

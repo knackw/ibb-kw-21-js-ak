@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax fetch</title>
+		<script>
+			function sndReq()
+			{
+				fetch( "inhalt.html" )
+					.then( datenVorbereiten )
+					.then( datenVerarbeiten )
+					.catch( fehlerBehandlung ) ;
+			}
+			
+			function datenVorbereiten( data )
+			{
+				if( data.ok )
+				{
+					return data.text() ;
+				}
+				return false ;
+				//alert( data.status );
+			}
+			
+			function datenVerarbeiten( data )
+			{
+				if( data )
+				{
+					console.log( "verarbeiten: " , data );
+					document.getElementById( "msg" ).innerHTML =  data ;	
+				}
+			}
+			
+			function fehlerBehandlung( fehler )
+			{
+				console.log( "Error: " , fehler );
+			}
+			
+			function init()
+			{
+				document.querySelector( "nav button" ).addEventListener( "click" , sndReq );
+			}
+			
+			window.addEventListener( "load" , init );
+		
+		</script>
+	</head>
+	<body>
+	
+		<header>AJAX fetch API</header>
+		
+		<nav>
+			<button>ajax</button>
+		</nav>
+		
+		<input onmouseover="this.style.border='2px solid green'; " 
+				onmouseout="this.style.border='2px solid red'; " >
+				
+		
+		<main>
+			<div id="readyState" ></div>
+			<div id="msg" >
+				
+				Hier wird der Inhalt angezeigt
+			
+			</div>
+		</main>
+		
+		<footer>unten</footer>
+	</body>
+</html>

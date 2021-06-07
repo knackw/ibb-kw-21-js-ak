@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+					border : 2px solid green ;
+					padding : 20px ;
+				}
+		</style>
+		
+		<script>
+			function clickBody( ev )
+			{
+				ev.stopPropagation();
+				document.getElementById("msg").innerHTML += "1-" + ev.target.id + "<br>" ;
+			}
+			function clickDiv( ev )
+			{
+				//ev.stopPropagation();
+				document.getElementById("msg").innerHTML += "2 " ;
+			}
+			function clickButton1()
+			{
+				document.getElementById("msg").innerHTML += "3 " ;
+			}
+			function clickButton2( ev )
+			{
+				//ev.stopPropagation();	// verhindert das Weiterreichen des Events ( Das Event wird gelöscht )
+				document.getElementById("msg").innerHTML += "4 " ;
+			}
+		
+		
+			function init()
+			{
+						// Ein dritte Argument(true/false) für "addEventListener" gibt an, 
+						// ob der Eventhandler in der absteigenden Phase (Capturing Phase) ausgeführt werden soll
+						// standard ist false
+				document.querySelector( "body" ).addEventListener( "click" , clickBody , true  );
+				document.querySelector( "div" ).addEventListener( "click" , clickDiv );
+				document.querySelector( "button" ).addEventListener( "click" , clickButton1 );
+				document.querySelectorAll( "button" )[1].addEventListener( "click" , clickButton2 );
+			}
+			window.addEventListener( "load" , init );
+		</script>
+	</head>
+	<body id="b" >
+		<div id="d" >
+			<button id="b1" >btn 1</button>
+			<button id="b2" >btn 2</button>
+		</div>
+		<div id="msg" ></div>
+	</body>
+</html>

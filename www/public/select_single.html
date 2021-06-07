@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style> #msg { position : absolute ; top: 10px; left : 330px; }</style>
+		<script>
+		
+			function check()
+			{
+				/*
+					document.anmeldung.obst					--> <select>
+					--------------------------------------------------------------------
+					
+					document.anmeldung.obst[0]				--> ist die erste <option>
+					document.anmeldung.obst[1]				--> ist die zweite <option>
+					
+					document.anmeldung.obst[0].value		--> inhalt (value) der ersten <option>
+					
+					document.anmeldung.obst.length			--> Anzahl der Optionen
+					
+					nicht so gut ...
+					-----
+					... besser ist 
+					
+					document.anmeldung.obst.options[0]				--> ist die erste <option>
+					document.anmeldung.obst.options[1]				--> ist die zweite <option>
+					document.anmeldung.obst.options[0].value		--> inhalt (value) der ersten <option>
+					document.anmeldung.obst.options[0].selected		--> true wenn die Option ausgewählt ist
+					
+					document.anmeldung.obst.options.length			--> Anzahl der Optionen
+					
+					---
+					
+					document.anmeldung.obst.selectedIndes			--> Index der ausgewählten Option
+				
+				*/
+				
+				
+				var obst = "" ;
+				var isError = false ;
+				
+				var index = document.anmeldung.obst.selectedIndex ;
+				
+				if( index <= 0 )
+				{
+					isError = true ;
+				}
+				else
+				{
+					obst = document.anmeldung.obst.options[index].value ;
+				}
+				
+				document.getElementById("msg").innerHTML = index + " - " + obst ;
+			}
+			
+
+		</script>
+	</head>
+	<body>
+		<form name="anmeldung" action="weiter.php" method="GET"  >
+		
+			<p>Vorname: <input type="text" name="vorname"  ></p>
+
+			<p>Obst:
+				<select name="obst" >
+					<option value=""  >-Auswahl-</option>
+					<option value="a" >Apfel</option>
+					<option >Birne</option>
+					<option >Kirsche</option>
+					<option>Banane</option>
+					<option>Dattel</option>
+				</select>
+			</p>
+		
+			<p><input type="button" onclick="check();"  value="BTN" ></p>
+
+		</form>
+		<div id="msg" ></div>
+	</body>
+</html>

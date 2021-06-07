@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>events this</title>
+		<script>
+			function check()
+			{
+				document.getElementById("msg").innerHTML += this.id + " " + this.alt + "<br>" ;
+			}
+			
+			function init()
+			{
+				// so geht es auch ...
+				//function check()
+				//{
+				//	document.getElementById("msg").innerHTML += this.id + " " + this.alt + "<br>" ;
+				//}
+				
+															// Hier wird eine Referenz auf eine externe
+															// Funktion als Eventhändler übergeben .
+				document.getElementById( "bild1" ).onclick = check ;
+				document.getElementById( "bild2" ).onmouseover = check ;
+				document.getElementById( "bild3" ).onmouseout = check ;
+			}
+			
+			window.onload = init;
+		
+		</script>
+	</head>
+	<body>
+		<img id="bild1" src="../images/01.jpg" alt="a" >
+		<img id="bild2" src="../images/02.jpg" alt="b" >
+		<img id="bild3" src="../images/04.jpg" alt="c" >
+		
+		<div id="msg" ></div>
+	</body>
+</html>

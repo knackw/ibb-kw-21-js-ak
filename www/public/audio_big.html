@@ -1,0 +1,170 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Audio/Video</title>
+		<style>
+			#musicBox {
+							padding : 5px ;
+							border : 3px solid green;
+							width : 250;
+			}
+			
+			#musicBox button {
+							width : 50px;
+			}
+			
+			
+		</style>
+		<script>
+			/*
+			Audio/Video
+				
+				volume		// Lautstärke 0 - 1
+				muted		// true = aus , false = an
+				currentTime
+				duration
+				
+				play()
+				pause()
+				
+				played[]
+				played.length
+				played.start(i)
+				played.end(i)
+		
+		
+			*/
+			
+			
+			function myPlay( id )
+			{
+				var elem = document.getElementById( id ) ;
+				elem.play() ;
+			}
+		
+			function pause( id )
+			{
+				document.getElementById( id ).pause() ;
+			}
+			
+			function lauter( wert ) 
+			{
+				document.getElementById("myAudio").volume += wert ;
+			}
+			
+			function setVol( wert )
+			{
+				document.getElementById("myAudio").volume = wert ;
+			}
+			
+			function mute()
+			{
+				var elem = document.getElementById("myAudio") ;
+				/*
+				if ( elem.muted )
+					elem.muted = false ;
+				else
+					elem.muted = true ;		// AUS
+				*/
+				
+				elem.muted = !elem.muted ;
+			}
+			
+			function vor()
+			{
+				if ( window.HTMLAudioElement )
+				{
+				
+					// Das Lied wird um 10 Sekunden vorgespuhlt
+				
+					document.getElementById("myAudio").currentTime += 10 ;
+	
+				}
+			}
+
+			function next()
+			{
+				var elem = document.getElementById("myAudio");
+				
+				elem.src = "Drive.mp3" ;
+			}
+
+			function isPlayed()
+			{
+				var elem = document.getElementById("myAudio") ;
+				document.getElementById( "msg" ).innerHTML = elem.played.length + "<br>" ;
+				for ( var i = 0 ; i < elem.played.length ; i++ )
+				{
+					document.getElementById( "msg" ).innerHTML += " : " + elem.played.start(i) + " - " + elem.played.end(i) + "<br>" ;
+				}
+				
+				console.log( elem.played ) ;
+				
+				document.getElementById( "msg" ).innerHTML += "duration: " + elem.duration + "<br>";
+				document.getElementById( "msg" ).innerHTML += "currentTime : " + elem.currentTime + "<br>";
+				
+			}
+			
+			//------------------------------------------------------------------------------
+			
+			var song = [ "Viva.mp3" , "Drive.mp3" ] ;
+			
+			function playNew( nr )
+			{
+				document.getElementById('myAudio').src =  song[nr] ;
+			}
+			
+			function setLowVolume()
+			{
+				document.getElementById('myAudio').volume = 0.3 ;
+				
+				// volume="0.2"  im audiotag geht nicht !!
+			}
+		</script>
+	</head>
+	
+	<body>
+
+		<audio id="myAudio" controls src="Viva.mp3" onloadeddata="setLowVolume()" >
+			<!-- <source src="Viva.mp3" type="audio/mpeg" id="song"> -->
+			audio funktioniert nicht
+		</audio>
+
+		<br>
+		<div id="musicBox" >
+			<button onclick="myPlay( 'myAudio' )">play</button>
+			<button onclick="pause( 'myAudio' )" >pause</button>
+			
+			<button onclick="lauter( 0.05 )" >lauter</button>
+			<button onclick="lauter( -0.05 )" >leiser</button><br>
+			<input type="range" id="vol" name="vol" min="0" max="1" step="0.01" oninput="setVol(this.value);"><br>
+			<button onclick="mute()" >mute</button>
+			
+			<button onclick="vor()" >vor</button>
+			<button onclick="next()" >next</button>
+			
+			<button onclick="isPlayed()">played</button>
+		</div>
+		<br>
+		
+		<div id="msg"></div><br>
+		
+		
+		<div id="playlist" >
+			<p onclick="playNew(0);" >Viva</p>
+			<p onclick="playNew(1);" >Drive</p>
+		</div>
+		
+		
+		<video id="myVideo" controls  src="trailer_avatar.mp4" >
+			<!-- <source type="video/mp4" src="trailer_avatar.mp4" > -->
+		</video>
+		
+		<br>
+		<button onclick="myPlay( 'myVideo' )" >play</button>
+		<button onclick="pause( 'myVideo' )" >pause</button>
+		
+		
+	</body>
+	
+</html>

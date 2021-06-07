@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+					color : green ;
+					border : 3px solid blue ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="abc" title="hallo" >Guten Tag</div>
+		<script>
+		
+			//var farbe = document.querySelector( "div" ).style.color ;  // geht nicht !!
+		
+		
+			var cssObj = getComputedStyle( document.querySelector( "div" ) )
+			//var farbe = cssObj.getPropertyValue("color") ;
+			var farbe = cssObj.color ;
+			document.write( farbe , "<br>" );
+			
+			
+			//var farbe1 = cssObj.getPropertyValue("border-bottom-color") ;
+			var farbe1 = cssObj["border-bottom-color"] ;
+			var farbe2 = cssObj.borderBottomColor ; 
+			
+			document.write( "Farbe1 : " , farbe1 , "<br>" );
+			document.write( "Farbe2 : " , farbe2 , "<br>" );
+			
+			console.log( cssObj );
+			
+			
+			document.querySelector( "div" ).style.borderBottomColor = "red" ;
+			document.querySelector( "div" ).style["border-top-color"] = "green" ;
+			
+		
+		</script>
+		
+	</body>
+</html>

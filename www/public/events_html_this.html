@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>events this</title>
+		<script>
+			function check( elem )
+			{
+				document.getElementById("msg").innerHTML += elem.id + " " + elem.alt + "<br>" ;
+			}
+		
+		</script>
+	</head>
+	<body>
+		<img id="bild1" src="../images/01.jpg" alt="a" onclick="check( this );"   >
+		<img id="bild2" src="../images/02.jpg" alt="b" onmouseover="check( this );" >
+		<img id="bild3" src="../images/04.jpg" alt="c" onmouseout="check( this );" >
+		
+		<div id="msg" ></div>
+	</body>
+</html>

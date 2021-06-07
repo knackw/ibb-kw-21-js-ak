@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie setzen</title>
+		<style></style>
+	</head>
+	<body>
+		<script>
+		
+			document.write( "Cookies : " , document.cookie , "<br>" );
+			
+			//document.cookie = "bildNr=12" ;
+			
+			//document.cookie = "bildName=Blumenwiese" ;
+			
+			//document.cookie = "Name=Peter; path=/" ;
+			
+			
+				// Cookie mit Gültigkeitsdauer
+			
+			//document.cookie = "NachName=Pan; path=/; max-age=120" ;
+			
+				// Cookie mit Gültigkeitdatum
+				
+				
+			var datum = new Date();
+			
+			datum.setMinutes( datum.getMinutes() + 2 ) ;
+			
+			var c = "Ort=Neverland; path=/; expires=" + datum.toGMTString() ;
+			
+			document.write( c );
+			
+			document.cookie = c ;
+				
+		
+		</script>
+	</body>
+</html>

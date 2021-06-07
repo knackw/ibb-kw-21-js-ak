@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.thumbs img { border : 2px solid green ; }
+			.thumbs img.activ { border : 2px solid red ; }
+			.big img { width : 300px; } 
+		</style>
+		<script>
+		
+			var gallery = {
+			
+		
+				imgNr : 0 ,
+				setBigImg : function( nr )
+				{
+					document.querySelector('.big img').src = gallery.getSrc( nr ) ;
+					document.querySelectorAll( ".thumbs img" )[nr].className = "activ" ;
+					document.querySelectorAll( ".thumbs img" )[gallery.imgNr].className = "" ;
+					gallery.imgNr = nr ;
+				} ,
+				getSrc :function( nr )
+				{
+					switch( nr )
+					{
+						case 0 : return '../images/big/Chrysanthemum.jpg' ;
+						case 1 : return '../images/big/Desert.jpg' ;
+						case 2 : return '../images/big/Hydrangeas.jpg' ;
+						case 3 : return '../images/big/Jellyfish.jpg' ;
+						case 4 : return '../images/big/Koala.jpg' ;
+						case 5 : return '../images/big/Lighthouse.jpg' ;
+						case 6 : return '../images/big/Penguins.jpg' ;
+						case 7 : return '../images/big/Tulips.jpg' ;
+					}
+				} ,
+				nextImg : function()
+				{
+					if( gallery.imgNr + 1 < 8 )
+						gallery.setBigImg( gallery.imgNr + 1 );
+					else
+						gallery.setBigImg( 0 );
+				} ,
+				prevImg : function()
+				{
+					if( gallery.imgNr - 1 >= 0 )
+						gallery.setBigImg( gallery.imgNr - 1 )
+					else
+						gallery.setBigImg( 7 );
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="ctrls" >
+			<button onclick="gallery.prevImg();" >prev</button>
+			<button onclick="gallery.nextImg();" >next</button>
+		</div>
+		<div class="thumbs" >
+			<img src="../images/thumbs/pic1s.jpg" alt="" onclick="gallery.setBigImg(0); ">
+			<img src="../images/thumbs/pic2s.jpg" alt="" onclick="gallery.setBigImg(1); ">
+			<img src="../images/thumbs/pic3s.jpg" alt="" onclick="gallery.setBigImg(2); ">
+			<img src="../images/thumbs/pic4s.jpg" alt="" onclick="gallery.setBigImg(3); ">
+			<img src="../images/thumbs/pic5s.jpg" alt="" onclick="gallery.setBigImg(4); ">
+			<img src="../images/thumbs/pic6s.jpg" alt="" onclick="gallery.setBigImg(5); ">
+			<img src="../images/thumbs/pic7s.jpg" alt="" onclick="gallery.setBigImg(6); ">
+			<img src="../images/thumbs/pic8s.jpg" alt="" onclick="gallery.setBigImg(7); ">
+		</div>
+		<div class="big" >
+			<img src="" alt="" >
+		</div>
+	</body>
+</html>

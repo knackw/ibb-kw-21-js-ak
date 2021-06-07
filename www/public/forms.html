@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+	</head>
+	<body>
+	
+		<form name="abc" method="" action="" >
+			<input type="text" name="login" class="eingabe" id="myLogin" ><br>
+			<select name="user" >
+				<option value="a">admin</option>
+				<option>user</option>
+				<option>gast</option>
+			</select>
+			<input type="submit" value="SENDEN" >
+		</form>
+		
+		<form name="cde" method="" action="" >
+			<span>Hobby:</span>
+				Sport: <input type="checkbox" name="hobby" value="sport" >
+				Lesen: <input type="checkbox" name="hobby" value="lesen" >
+				Kino:  <input type="checkbox" name="hobby" value="kino" >
+				PC:    <input type="checkbox" name="hobby" value="pc" ><br>
+		
+			Info: <textarea name="info"></textarea><br>
+			<input type="button" value="CHECK" onclick="check();" >
+		</form>
+		<hr>
+		<script>
+			document.write( "Anzahl forms: " , 		document.forms.length , "<br>" );
+			document.write( "Anzahl der Elemente im ersten form-tag: " , 	document.forms[0].elements.length , "<br>" );
+			document.write( "Anzahl  der Elemente im zweiten form-tag: " , 	document.forms[1].elements.length , "<br>" );
+			
+			
+			document.write( "Login: " , 			document.forms[0].elements[0].value , "<br>" );
+			document.write( "Login: " , 			document.abc.login.value , "<br>" );
+			document.write( "Anzahl options: " , 	document.forms[0].elements[1].options.length , "<br>" );
+			document.write( "1. options: " , 		document.forms[0].elements[1].options[0].value , "<br>" );
+			document.write( "2. options: " , 		document.forms[0].elements[1].options[1].value , "<br>" );
+			document.write( "Anzahl hobby: " , 		document.forms[1].hobby.length , "<br>" );
+			document.write( "Anzahl hobby: " , 		document.cde.hobby.length , "<br>" );
+			document.write( "1. Hobby: " , 			document.cde.hobby[0].value , "<br>" );
+			document.write( "4. Hobby: " , 			document.cde.hobby[3].value , "<br>" );
+			
+			
+			
+			// haben mehrere Elemente innerhalb eines Fomulars den gleichen "name" wird ein Array erzeugt
+			document.forms[1].hobby[3].checked = true ;
+			
+			
+			document.forms[0].elements[1].options[0].innerHTML = "ADMIN" ;
+			
+			/***********************
+						--- DOM Objekthierachie ---	
+			
+			screen
+			navigator
+			
+			
+			window
+				
+				event
+				history
+				location
+				localStorage
+				sessionStorage
+				document
+				
+					all[]
+					links[]
+					images[]
+					applets[]
+					forms[]
+					
+						elements[]
+						
+							options[]
+			****/
+		
+		</script>
+	</body>
+</html>

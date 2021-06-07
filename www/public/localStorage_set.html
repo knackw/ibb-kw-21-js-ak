@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>setItem</title>
+		<style></style>
+	</head>
+	<body>
+		<p> SetItem </p>
+		<script>
+
+			if( window.localStorage )
+			{
+				document.write( "LocalStorage ok<br>" );
+			}
+			else
+			{
+				document.write( "Kein LocalStorage<br>" );
+			}
+			
+			localStorage.setItem( "vorname" , "Peter" );
+			localStorage.setItem( "nachname" , "Pan" );
+
+		</script>
+	</body>
+</html>

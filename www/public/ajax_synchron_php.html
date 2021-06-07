@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AJAX</title>
+		<script>
+		
+			function sndReq()
+			{
+				var ajax = new XMLHttpRequest();
+				
+				// Request wird vorbereitet
+				ajax.open( "GET" , "inhaltx.php" , false ); // false -> synchron
+				
+				
+				// Request wird ausführen
+				ajax.send( null );
+				
+				
+				if( ajax.status >= 200 && ajax.status < 300 )
+				{
+					document.getElementById("content").innerHTML = ajax.responseText ;
+				}
+				else
+				{
+					alert( ajax.status + " " + ajax.statusText );
+				}
+			
+			}
+		
+			function init()
+			{
+				document.querySelector( "nav a" ).addEventListener( "click" ,sndReq );
+			}
+			
+			window.addEventListener( "load" , init );
+		
+		</script>
+	</head>
+	<body>
+		<header>AJAX</header>
+		<nav>
+			<ul>
+				<li><a>link</a></li>
+			</ul>
+		</nav>
+		<main>
+			<input onmouseover="this.style.border='3px solid green'; " 
+				onmouseout="this.style.border='3px solid red'; " >
+			<div id="content" >   </div>
+		</main>
+		<footer>
+			Guten Tag
+		</footer>
+	</body>
+</html>

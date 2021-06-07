@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+		<script src="../lib/jquery-3.6.0.min.js"></script>
+		<script>
+		
+			/*
+		
+			$()		--> Factoryfunction		// alias  --> jQuery
+		
+		
+			$( selector ).methode()
+			
+					
+						selector  ->		CSS-String
+											HTML-String
+											Objekt (DOM-Knoten)
+											Funktion( Eventhandler für DOMContentLoaded )
+											
+						Returnwert ->		jQueryCollection  /  Collection  /  jQueryObjekt
+						
+			------
+
+			$.utility()
+			
+		
+			*/
+			
+			
+			function init()
+			{
+				
+				$( "div" ).css( {
+									border:"2px solid green", 
+									backgroundColor :"skyblue" ,
+									color:"red"
+				} );
+				
+				
+				$( "div" ).click( function(){
+				
+					//$( this ).slideUp( 3000 );
+					//$( this ).fadeOut( 3000 );
+					$( this ).animate({ fontSize : "48px" , height : "60px" } , 2000 );
+				
+				} )
+				
+				$( "button" ).first().click( function(){
+				
+					$( "div" ).slideDown( 2000 );
+				
+				} );
+				
+				
+				$( "button" ).eq(1).click( function(){
+				
+					$( "div" ).stop();
+				
+				} );
+				
+				
+				
+				$( "button" ).eq(2).click( function(){
+				
+					$.ajax({
+					
+						url : "datenx.txt" ,
+						async : true ,
+						method : "GET" ,
+						cache : false ,
+						dataType : "html" ,
+						
+						success : function( data ){ $( "#d4" ).html( data ) ; } ,
+						
+						error : function(){ $( "#d2" ).html( "ajaxError" ); } ,
+						
+						complete : function(){ $( "#d3" ).html( "fertig" ); }
+					
+					
+					});
+				
+				} );
+				
+				
+				
+			}
+			
+			$( init );
+			
+			
+		
+		
+		</script>
+	</head>
+	<body>
+		<button>EINS</button>
+		<button>ZWEI</button>
+		<button>DREI</button>
+		<div id="d1">eins</div>
+		<div id="d2">zwei</div>
+		<div id="d3">drei</div>
+		<div id="d4">vier</div>
+	</body>
+</html>

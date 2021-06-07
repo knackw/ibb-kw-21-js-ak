@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.thumbs img { border : 2px solid green ; }
+			.thumbs img.activ { border : 2px solid red ; }
+			.big img { width : 300px; } 
+		</style>
+		<script>
+			var imgNr = 0;
+			function setBigImg( nr )
+			{
+				document.querySelector('.big img').src = getSrc( nr ) ;
+				document.querySelectorAll( ".thumbs img" )[nr].className = "activ" ;
+				document.querySelectorAll( ".thumbs img" )[imgNr].className = "" ;
+				imgNr = nr ;
+			}
+			function getSrc( nr )
+			{
+				switch( nr )
+				{
+					case 0 : return '../images/big/Chrysanthemum.jpg' ;
+					case 1 : return '../images/big/Desert.jpg' ;
+					case 2 : return '../images/big/Hydrangeas.jpg' ;
+					case 3 : return '../images/big/Jellyfish.jpg' ;
+					case 4 : return '../images/big/Koala.jpg' ;
+					case 5 : return '../images/big/Lighthouse.jpg' ;
+					case 6 : return '../images/big/Penguins.jpg' ;
+					case 7 : return '../images/big/Tulips.jpg' ;
+				}
+			}
+			function nextImg()
+			{
+				if( imgNr + 1 < 8 )
+					setBigImg( imgNr + 1 );
+				else
+					setBigImg( 0 );
+			}
+			function prevImg()
+			{
+				if( imgNr - 1 >= 0 )
+					setBigImg( imgNr - 1 )
+				else
+					setBigImg( 7 );
+			}
+		</script>
+	</head>
+	<body>
+		<div id="ctrls" >
+			<button onclick="prevImg();" >prev</button>
+			<button onclick="nextImg();" >next</button>
+		</div>
+		<div class="thumbs" >
+			<img src="../images/thumbs/pic1s.jpg" alt="" onclick="setBigImg(0); ">
+			<img src="../images/thumbs/pic2s.jpg" alt="" onclick="setBigImg(1); ">
+			<img src="../images/thumbs/pic3s.jpg" alt="" onclick="setBigImg(2); ">
+			<img src="../images/thumbs/pic4s.jpg" alt="" onclick="setBigImg(3); ">
+			<img src="../images/thumbs/pic5s.jpg" alt="" onclick="setBigImg(4); ">
+			<img src="../images/thumbs/pic6s.jpg" alt="" onclick="setBigImg(5); ">
+			<img src="../images/thumbs/pic7s.jpg" alt="" onclick="setBigImg(6); ">
+			<img src="../images/thumbs/pic8s.jpg" alt="" onclick="setBigImg(7); ">
+		</div>
+		<div class="big" >
+			<img src="" alt="" >
+		</div>
+	</body>
+</html>

@@ -1,0 +1,17 @@
+[
+	{
+		"nr" : 12 ,
+		"vorname" : "Otto" ,
+		"nachname" : "Walkes" ,
+		"ort" : "Emden" ,
+		"tel" : [ "012345678" , "04567 1234" ]
+	} ,
+
+	{
+		"nr" : "34" ,
+		"vorname" : "Peter" ,
+		"nachname" : "Pan" ,
+		"ort" : "Neverland" ,
+		"tel" : [ "012345699" , "04533 567890" ]
+	}
+]

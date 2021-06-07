@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>events this</title>
+		<script>
+			function check( elem )
+			{
+				document.getElementById("msg").innerHTML += elem.id + " " + elem.alt + "<br>" ;
+			}
+			function check2()
+			{
+				document.getElementById("msg").innerHTML += this.id + " " + this.alt + "<br>" ;
+			}
+			
+			function init()
+			{
+																				// anonyme Funktion
+				document.getElementById( "bild1" ).addEventListener( "click" , function(){ check( this ) ; } ); 
+				
+				document.getElementById( "bild2" ).addEventListener( "mouseover" , function(){ check( this ) ; } ) ;
+				
+																					// externe Funktion
+				document.getElementById( "bild3" ).addEventListener( "mouseout" , check2 ) ;
+			}
+			
+			window.addEventListener( "load" , init );	
+		</script>
+	</head>
+	<body>
+		<img id="bild1" src="../images/01.jpg" alt="a" >
+		<img id="bild2" src="../images/02.jpg" alt="b" >
+		<img id="bild3" src="../images/04.jpg" alt="c" >
+		
+		<div id="msg" ></div>
+		
+	</body>
+</html>

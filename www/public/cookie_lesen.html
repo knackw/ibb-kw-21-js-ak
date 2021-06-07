@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie lesen</title>
+		<style></style>
+	</head>
+	<body>
+		<script>
+		
+			document.write( "Cookies : " , document.cookie , "<br>" );
+			
+			function readCookie( cName )
+			{
+				var cArray = document.cookie.split( "; " );
+				console.log( cArray );
+				for( var i = 0 ; i < cArray.length ; i++ )
+				{
+					var temp = cArray[i].split( "=" );
+					if( temp[0] == cName )
+					{
+						return temp[1] ;
+					}
+				}
+				return null ;
+			}
+			
+			
+			//			"Name="
+			
+			// "bildNr=12; bildName=Blumenwiese; Name=Peter; NachName=Pan; Ort=Neverland"
+			
+			/*
+				cArray[0] = "bildNr=12"
+				cArray[1] = "bildName=Blumenwiese"
+				cArray[2] = "Name=Peter"
+				cArray[3] = "NachName=Pan"
+				cArray[4] = "Ort=Neverland"
+			*/
+			
+			document.write( "bildNr: " , readCookie( "bildNr" ) , "<br>" );
+			document.write( "bildName: " , readCookie( "bildName" ) , "<br>" );
+			document.write( "Name: " , readCookie( "Name" ) , "<br>" );
+			document.write( "NachName: " , readCookie( "NachName" ) , "<br>" );
+			document.write( "Ort: " , readCookie( "Ort" ) , "<br>" );
+			
+		
+		</script>
+	</body>
+</html>

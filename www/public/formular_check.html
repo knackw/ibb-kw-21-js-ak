@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style> 
+			#msg { 
+				position : absolute ; 
+				top: 10px; 
+				left : 330px; 
+			}
+			
+			input:invalid {
+			
+					border : 2px solid red ;
+			}
+			input:valid {
+			
+					border : 2px solid green ;
+			}
+			
+		</style>	
+		<script>
+			function checkEmail( ev )
+			{
+				const email = document.querySelector( "[name=email]" );
+				
+				/*
+					email.willValidity
+					email.validity
+					
+							validity.valid
+							validity.valueMissing
+					
+					email.validationMessage
+						
+					email.checkValidity()
+					email.setCustomValidity()
+					
+					
+				*/
+	
+				if( email.value == "" )
+				{
+					email.setCustomValidity( "Email ist nicht ok" ) ;
+				}
+				else
+				{
+					email.setCustomValidity( "" );
+				}
+			}
+			
+			
+			
+			function check( ev )
+			{
+				const form = document.querySelector( "form" );
+			
+
+				if( !form.checkValidity() )
+				{
+					//alert("Nicht ok") ;
+					document.getElementById("msg").innerHTML = "Nicht ok" ;
+				}
+				else
+				{
+					//alert( "ok" );
+					document.getElementById("msg").innerHTML = "ok" ;
+				}
+			}
+			
+			function init()
+			{
+				const vorname = document.querySelector( "[name=vorname]" );
+				
+				alert( vorname.validationMessage );
+
+				
+			}
+			
+			window.addEventListener( "load" , init );
+			
+		</script>
+	</head>
+	<body>
+		<form name="anmeldung" action="weiter.php" method="POST"   >
+		
+			<p>Anrede: 
+				Frau: <input type="radio" name="anrede" value="frau" required >
+				Herr: <input type="radio" name="anrede" value="herr" required  >
+				Firma: <input type="radio" name="anrede" value="firma" required >
+			</p>
+			
+			<p>Vorname: <input type="text" name="vorname" required  ></p>
+			<p>Nachname: <input type="text" name="nachname" required ></p>
+			<p>Ort: <input type="text" name="ort" pattern="[\w]{2,9}" ></p>
+			<p>Alter: <input type="number" name="alter" min="5" max="99" ></p>
+			<p>Email: <input type="text"  name="email" onkeyup="checkEmail()" ></p>
+			<p>Url: <input type="url" name="url" ></p>
+			<textarea></textarea>
+			<p>
+				Hobbys:
+				Sport: 	<input type="checkbox" name="hobby[]" value="sport">
+				Kino: 	<input type="checkbox" name="hobby[]" value="kino" >
+				PC: 	<input type="checkbox" name="hobby[]" value="pc" >
+				Lesen: 	<input type="checkbox" name="hobby[]" value="lesen" >
+			</p>
+			<p>
+				Obst:
+				<select name="obst" >
+					<option></option>
+					<option>Apfel</option>
+					<option >Birne</option>
+					<option>Kirsche</option>
+				</select>
+			</p>
+			<p>
+				<input type="button" name="senden" value="CHECK" onclick="check( event );">
+				<input type="submit" name="senden" value="SENDE" >
+			</p>
+		</form>
+
+		<div id="msg" ></div>
+	</body>
+</html>

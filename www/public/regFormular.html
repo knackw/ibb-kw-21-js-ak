@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.error {
+			
+						border : 2px solid red ;
+			}
+		
+		</style>
+		<script>
+			function check()
+			{
+				var vorname = document.regFormular.vorname ;
+				var nachname = document.regFormular.nachname ;
+				var ort = document.regFormular.ort ;
+				var login = document.regFormular.login ;
+				var pwd1 = document.regFormular.pwd1 ;
+				var pwd2 = document.regFormular.pwd2 ;
+			
+				var isError = false ;
+				var errMsg = [] ;
+				
+				for( var i = 0 ; i < document.regFormular.elements.length ; i++ )
+				{
+					document.regFormular.elements[i].classList.remove( "error" );
+				}
+				
+				
+				if( vorname.value.length <  3 )
+				{
+					isError = true;
+					errMsg.push( "Vorname nich ok" );
+					vorname.classList.add( "error" );
+				}
+				
+				
+				if( nachname.value.length <  3 )
+				{
+					isError = true;
+					errMsg.push( "Nachname nich ok" );
+					nachname.classList.add( "error" );
+				}
+				
+				if( ort.value.length <  3 )
+				{
+					isError = true;
+					errMsg.push( "Ort nich ok" );
+					ort.classList.add( "error" );
+				}
+				
+				
+				if( login.value == "" )
+				{
+					isError = true ;
+					errMsg.push( "Login nich ok" );
+					login.classList.add( "error" );
+				}
+				
+				if( pwd1.value != pwd2.value )
+				{
+					isError = true ;
+					errMsg.push( "PWDs nicht gleich" );
+					pwd1.classList.add( "error" );
+					pwd2.classList.add( "error" );
+				}
+				
+				if( pwd1.value == "" || pwd2.value == "" )
+				{
+					isError = true ;
+					errMsg.push( "PWD fehlt" );
+					pwd1.classList.add( "error" );
+					pwd2.classList.add( "error" );
+				}
+				
+				if( isError )
+				{
+					document.getElementById( "msg" ).innerHTML = errMsg.join( "<br>" );
+				
+					return false ;
+				}
+				else
+				{
+					return true;
+				}
+
+			}
+		
+		
+		</script>
+	</head>
+	<body>
+
+		<form name="regFormular" action="registrierung.php" method="POST" onsubmit="return check();" >
+			<p title="min 3 Zeichen">Vorname: <input type="text" name="vorname" ></p>
+			<p>Nachname: <input type="text" name="nachname" ></p>
+			<p>Ort: <input type="text" name="ort"  ></p>
+			<p>Login: <input type="text" name="login"  ></p>
+			<p>PWD1: <input type="text" name="pwd1" ></p>
+			<p>PWD2: <input type="text" name="pwd2" ></p>
+			<input type="submit" value="SAVE" name="reg" >
+		</form>
+
+		<div id="msg" ></div>
+
+	</body>
+</html>

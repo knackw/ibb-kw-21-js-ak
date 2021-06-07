@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style> #msg { position : absolute ; top: 10px; left : 330px; }</style>
+		<script>
+		
+			function check()
+			{
+				/*
+					document.anmeldung.obst					--> <select>
+					--------------------------------------------------------------------
+					
+					document.anmeldung.obst[0]				--> ist die erste <option>
+					document.anmeldung.obst[1]				--> ist die zweite <option>
+					
+					document.anmeldung.obst[0].value		--> inhalt (value) der ersten <option>
+					
+					document.anmeldung.obst.length			--> Anzahl der Optionen
+					
+					nicht so gut ...
+					-----
+					... besser ist 
+					
+					document.anmeldung.obst.options[0]				--> ist die erste <option>
+					document.anmeldung.obst.options[1]				--> ist die zweite <option>
+					document.anmeldung.obst.options[0].value		--> inhalt (value) der ersten <option>
+					
+					---
+					
+					document.anmeldung.obst.selectedIndes			--> Index der  ersten ausgewählten Option
+				
+				*/
+				
+				
+				
+				var isError = false ;
+				
+				var obst = document.anmeldung.obst ;
+				//var obst = document.anmeldung["obst[]"] ;
+				
+				var index = obst.selectedIndex ;
+				
+				var auswahl ;
+				
+				if( index < 0 )
+				{
+					isError = true ;
+					auswahl = "ERROR"
+				}
+				else
+				{
+					//auswahl = document.anmeldung.obst.options[index].value ;
+					auswahl = obst.options[index].value ;
+				}
+				
+				document.getElementById("msg").innerHTML = index + " / " + auswahl + "<hr>" ;
+				
+				//----------------
+				
+				auswahl = obst.selectedOptions ; 
+							// Array mit allen ausgewählten Optionen
+				
+				console.log( auswahl )
+				
+				for( var i = 0 ; i < auswahl.length ; i++ )
+				{
+					document.getElementById("msg").innerHTML += i + " " + auswahl[i].value + "<br>" ;
+				}
+
+			}
+			
+
+		</script>
+	</head>
+	<body>
+		<form name="anmeldung" action="weiter.php" method="GET"  >
+		
+			<p>Vorname: <input type="text" name="vorname"  ></p>
+
+			<p>Obst:
+				<select name="obst" multiple size="10" >
+					<option>Apfel</option>
+					<option>Birne</option>
+					<option>Kirsche</option>
+					<option>Banane</option>
+					<option>Dattel</option>
+				</select>
+			</p>
+		
+			<p><input type="button" onclick="check();"  value="BTN" ></p>
+
+		</form>
+		<div id="msg" ></div>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+		<script>
+			function sndReq()
+			{
+				var ajax = new XMLHttpRequest();
+				
+				
+				// Request vorbereiten
+				ajax.open( "GET" , "inhalt.html" , false ); // false -> synchron
+				
+				
+				// Request wird ausgeführt 
+				ajax.send( null );
+			
+				document.getElementById( "content" ).innerHTML = ajax.responseText ;
+			}
+		
+		
+			function init()
+			{
+				document.querySelector( "nav a" ).addEventListener( "click" , sndReq );
+			}
+			window.addEventListener( "load" , init );
+		</script>
+	</head>
+	<body>
+		<header>AJAX</header>
+		<nav>
+			<ul>
+				<li><a>link</a></li>
+			</ul>
+		</nav>
+		<main>
+			<div id="content" ></div>
+		</main>
+		<footer>
+			Guten Tag
+		</footer>
+	</body>
+</html>

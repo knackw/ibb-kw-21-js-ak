@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+		<script>
+		
+			function check( ev )
+			{
+				return false ;
+			}
+		
+			window.oncontextmenu = function( ev ){ return check() ; } ;
+            
+		</script>
+	</head>
+	<body>
+		
+		<form action="weiter.html" onsubmit="return check()"  onreset="return check()" method="POST">
+		
+			Login als 
+			Admin: <input type="radio" name="user" value="admin" onclick="return check()" >
+			User:  <input type="radio" name="user" value="user" >
+			Gast:  <input type="radio" name="user" value="gast"   >
+			<br>
+			Login1: <input type="text" name="login1" onkeypress="return check()" ><br>
+			Login2: <input type="text" name="login2" >
+			<br>
+			Hobbys:
+			Sport: <input type="checkbox" onclick="return check()" value="sport" >
+			Reisen: <input type="checkbox" onclick="return check()" value="reisen" >
+			Lesen: <input type="checkbox"  value="lesen" >
+			Kino: <input type="checkbox"  value="kino" >
+			<br>
+			<input type="submit" value="SENDEN" >
+			<input type="reset" value="RESET" >
+		
+		</form>
+		
+		
+		<a href="weiter.html" onclick="return check();" >weiter</a>
+		
+	</body>
+</html>

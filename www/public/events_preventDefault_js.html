@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>	
+		<script>
+		
+			function check( ev )
+			{
+				ev.preventDefault() ;	// Verhindert dass der Browser die eventtypischen Aktivitäten ( das Versenden, das Zurücksetzten, das Verlinken, Kontextmenü anzeigen, ... )  ausführt
+			}
+
+			window.addEventListener( "load" , function(){ 
+			
+				document.forms[0].addEventListener( "submit", check ) ;
+				document.forms[0].addEventListener( "reset",  check ) ;
+				document.forms[0].elements[0].addEventListener( "keypress", check ) ;
+				document.forms[0].elements[2].addEventListener( "click",    check ) ;
+				document.links[0].addEventListener( "click", check ) ;
+
+			} );
+			
+			window.addEventListener( "contextmenu" , check ) ;
+			
+			window.addEventListener( "resize" , function( ev ){ console.log( window.innerWidth ); check( ev );  } );
+			
+		</script>
+	</head>
+	<body>
+		<form name="formular" action="weiter.html" >
+			Vorname: <input type="test" name="vorname" ><br>
+			Nachname: <input type="test" ><br>
+			<br>
+			Hobbys:
+			Sport: <input type="checkbox" value="sport" >
+			Reisen: <input type="checkbox" value="reisen" >
+			<br>
+			<input type="submit" value="SENDEN" >
+			<input type="reset" value="RESET" >
+		</form>
+		<a href="weiter.html" >weiter</a>
+	</body>
+</html>

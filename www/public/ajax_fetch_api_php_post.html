@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AJAX fetch post php</title>
+		<script>
+		
+			function sndReq()
+			{
+				var id = document.getElementById("id").value ;
+				//var param = "id="+id+"&vorname=Peter&nachname=Pan" ;
+			
+				/*fetch( "datenx.php" , {
+							method : "post" ,
+							headers : {
+										"Content-Type" : "application/x-www-form-urlencoded"
+									},
+							body : param
+							
+						} ) */
+						
+						
+				//fetch( "inhaltx.html" )
+				fetch( "personx.json" )
+					.then( datenVorbereiten )
+					.then( datenVerarbeiten )
+					.catch( fehlerBehandlung ) ;
+			
+			}
+			function datenVorbereiten( response )
+			{
+				if( response.ok )
+				{
+					alert( "respone ok" );
+					//return response.text() ;
+					return response.json() ;
+				}
+				else
+					alert( "AJAX response error" );
+				
+				//throw new Error('Datei nicht gefunden'); 
+				//fehlerBehandlung( "Datei nicht gefunden" );
+				//return response.error();
+			}
+			
+			function datenVerarbeiten( data )
+			{
+				if( typeof( data ) == "undefined" )
+				{
+					fehlerBehandlung( "data undefined" );
+				}
+				else
+				{
+					console.log( "verarbeiten: " , data );
+					document.getElementById( "content" ).innerHTML =  "Data: " + data[0].vorname ;	
+				}
+			}
+			
+			function fehlerBehandlung( fehler )
+			{
+				console.log( fehler );
+				alert( "Error : " + fehler );
+			}
+		
+			function init()
+			{
+				document.querySelector( "nav a" ).addEventListener( "click" ,sndReq );
+			}
+			window.addEventListener( "load" , init );
+		</script>
+	</head>
+	<body>
+		<header>AJAX php post</header>
+		<nav>
+			<ul>
+				<li><a>link</a></li>
+			</ul>
+		</nav>
+		<main>
+			<input id="id" onmouseover="this.style.border='3px solid green'; " 
+				onmouseout="this.style.border='3px solid red'; " >
+			<div id="readyState" ></div>
+			<div id="content" >   </div>
+		</main>
+		<footer>
+			Guten Tag
+		</footer>
+	</body>
+</html>

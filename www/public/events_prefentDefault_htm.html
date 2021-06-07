@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+		<script>
+		
+			function check( ev )
+			{
+			
+				// Die Methode preventDefault verhindert ( so wie "return false" ) das Defaultverhalten des Browsers
+			
+				ev.preventDefault() ;
+			}
+		
+			window.oncontextmenu = function( ev ){ check( ev ) ; } ;
+            
+		</script>
+	</head>
+	<body>
+		
+		<form action="weiter.html" onsubmit="check( event )"  onreset="check( event )" >
+		
+			Login als 
+			Admin: <input type="radio" name="user" value="admin" onclick="check( event );" >
+			User:  <input type="radio" name="user" value="user"   >
+			Gast:  <input type="radio" name="user" value="gast"   >
+			<br>
+			Login: <input type="text" onkeypress="check( event )" >
+			<br>
+			Hobbys:
+			Sport: <input type="checkbox" onclick="check( event );" value="sport" >
+			Reisen: <input type="checkbox" onclick="check( event );" value="reisen" >
+			Lesen: <input type="checkbox"  value="lesen" >
+			Kino: <input type="checkbox"  value="kino" >
+			<br>
+			<input type="submit" value="SENDEN" >
+			<input type="reset" value="RESET" >
+		
+		</form>
+		
+		
+		<a href="weiter.html" onclick="check( event )" >weiter</a>
+		
+	</body>
+</html>

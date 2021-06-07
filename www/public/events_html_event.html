@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>events event</title>
+		<script>
+			function check( ev )
+			{
+				document.getElementById("msg").innerHTML += ev.pageX + " " + ev.pageY + " " + ev.type + "<br>" ;
+			}
+		
+		</script>
+	</head>
+	<body>
+		<img id="bild1" src="../images/01.jpg" alt="a" onclick="check( event );" >
+		<img id="bild2" src="../images/02.jpg" alt="b" onmouseover="check( event );" >
+		<img id="bild3" src="../images/03.jpg" alt="c" onmouseout="check( event );" >
+		<img id="bild4" src="../images/04.jpg" alt="c" onmousemove="check( event );" >
+		
+		<div id="msg" ></div>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+		<script src="../lib/jquery-3.6.0.min.js"></script>
+		<script>
+			// javaScript
+			
+			function init()
+			{
+				var divs = document.querySelectorAll( "div" );
+				for( var i = 0 ; i < divs.length ; i++ )
+				{
+					divs[i].style.color = "green" ;
+					divs[i].addEventListener( "click" , function(){
+						alert( this.id );
+					} );
+				}
+			}
+			document.addEventListener( "DOMContentLoaded" , init );
+		
+			
+			// jQuery
+			
+			function init2()
+			{
+				$( "div" )
+					.css( "border" , "2px solid orange" )
+					.on( "click" ,function(){
+						 $(this).html( "xyz" ) ;
+				});
+			}
+			$( init2 ) ;
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="d1" >eins</div>
+		<div id="d2" >zwei</div>
+		<div id="d3" >drei</div>
+		<div id="d4" >vier</div>
+	</body>
+</html>

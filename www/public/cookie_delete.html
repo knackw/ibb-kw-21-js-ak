@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie löschen</title>
+		<style></style>
+	</head>
+	<body>
+		<script>
+		
+			document.write( "Cookies : " , document.cookie , "<br>" );
+			
+			
+			// Ein Cookie wird gelöscht indem die Haltbarkeitsdauer(datum) negativ angegeben wird
+
+			document.cookie = "bildNr=; max-age=-1" ;
+			
+			var datum = new Date()
+			
+			datum.setMinutes( datum.getMinutes() - 1 );
+			
+			var c = document.cookie = "bildName=; expires=" + datum.toGMTString() ;
+			
+			document.write( c ) ;
+			document.cookie = c ;
+			
+		</script>
+	</body>
+</html>

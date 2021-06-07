@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>getElement - querySelector</title>
+		<script>
+		
+		/*
+			Können nur auf das gesamte document angewendet werden
+		
+		document.getElementById()
+		document.getElementsByName()		// name-Attribute
+		document.getElementsByClassName()	// class-Attribute
+		------------------------------------------------------------
+		
+			Können auch auf HTML-Knoten angewendet werden
+			
+		Element.getElementsByTagName()
+		Element.querySelector()
+		Element.querySelectorAll()
+		*/
+		
+		
+		function check()
+		{
+			document.getElementById( "msg" ).innerText = "hallo" ;
+			
+			document.querySelector( "#msg" ).innerText = "HALLO" ;
+			
+			//document.getElementById( "msg3" ).getElementsByTagName( "span" )[0].innerText = "moin" ;
+			document.getElementById( "msg3" ).querySelector( "span" ).innerText = "f" ;
+			
+			document.getElementsByClassName("zwei")[0].innerHTML = "ZWEI" ;
+			document.getElementsByClassName("zwei")[0].style.color = "red";
+		}
+		
+		
+		</script>
+	</head>
+	<body onload="check()">
+		<div id="msg" >eins</div>
+		<div class="zwei">zwei</div>
+		<div id="msg3"><span>d</span>rei</div>
+	</body>
+</html>

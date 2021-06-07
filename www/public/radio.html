@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style> #msg { position : absolute ; top: 10px; left : 330px; }</style>
+		<script>
+		
+			function check()
+			{
+				var anrede = "" ;
+				var isAnrede = false ;
+				var isError = false ;
+				
+				// Da mehrere Elemente im Formular den Namen "anrede" haben,
+				//  ist "document.anmeldung.anrede" ein Array(HTML-Collection)!!
+				
+				anrede = document.anmeldung.anrede.value ;	
+					// geht nicht im IE ..
+				
+					// .. deshalb wäre das hier noch nötig
+				for( var i = 0 ; i < document.anmeldung.anrede.length ; i++ )
+				{
+					if( document.anmeldung.anrede[i].checked )
+					{
+						anrede = document.anmeldung.anrede[i].value ;
+						isAnrede = true;
+						break;
+					}
+				}
+				
+				//if( !isAnrede )
+				if( isAnrede == false )
+				{
+					isError = true ;
+				}
+				
+				document.getElementById("msg").innerHTML = anrede + " " + isError ;
+			}
+		</script>
+	</head>
+	<body>
+		<form name="anmeldung" >
+		
+			<p>Anrede: 
+				Frau:  <input type="radio" name="anrede" value="frau" >
+				Herr:  <input type="radio" name="anrede" value="herr" >
+				Firma: <input type="radio" name="anrede" value="firma" >
+			</p>
+			
+			<p>Vorname: <input type="text" name="vorname" ></p>
+			<p>Nachname: <input type="text" name="nachname" ></p>
+			<p><input type="button" onclick="check();" value="BTN" ></p>
+	
+		</form>
+		<div id="msg" ></div>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>events this</title>
+		<script>
+			function check( zahl )
+			{
+				document.getElementById("msg").innerHTML +=  zahl + "<br>" ;
+			}
+
+
+			window.onload = function(){ check(5); } ; // Wird von der nachfolgenden Anweisung überschrieben
+			window.onload = function(){ check(6); } ; // Wird später vom body-onload überschrieben
+			
+			
+			window.addEventListener( "load" , function() { check(1);}  );
+			
+			window.addEventListener( "load" , function() { check(2); } );
+			
+
+			document.addEventListener( "DOMContentLoaded" , function() { check(3); } );
+			
+			
+			window.addEventListener( "error" , function( e ){ 
+					console.log( arguments ) ; 
+					alert( e.message ); 
+				} 
+			);
+		
+		</script>
+	</head>
+	<body onload="check(4);"  >
+		<img id="bild1" src="../images/01.jpg" alt="a" >
+		<img id="bild2" src="../images/02.jpg" alt="b" >
+		<img id="bild3" src="../images/04.jpg" alt="c" >
+		
+		<div id="msg" ></div>
+		<script>
+			check(7);
+			
+			alert( xy );
+			
+		</script>
+	</body>
+</html>

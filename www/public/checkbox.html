@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style> #msg { position : absolute ; top: 10px; left : 330px; }</style>
+		<script>
+		
+			function check()
+			{
+				var alleHobbys = [] ;
+				var isHobby = false ;
+				var isError = false ;
+				
+				// Da mehrere Elemente im Formular den Namen "hobby" haben,
+				//  ist "document.anmeldung.hobby" ein Array!!
+				
+				//var hobbys = document.anmeldung.hobby ;
+				var hobbys = document.anmeldung["hobby[]"] ;
+				
+				for( var i = 0 ; i < hobbys.length ; i++ )
+				{
+					if( hobbys[i].checked )
+					{
+						alleHobbys.push( hobbys[i].value ) ;
+						isHobby = true;
+						//break;
+					}
+				}
+				
+				if( !isHobby )
+				{
+					isError = true ;
+				}
+				
+				document.getElementById("msg").innerHTML = alleHobbys ;
+			}
+			
+
+		</script>
+	</head>
+	<body>
+	
+		<form name="anmeldung" action="weiter.php" method="GET"  >
+		
+			<p>Vorname: <input type="text" name="vorname"  ></p>
+			<p>Nachname: <input type="text" name="nachname" ><p>
+				Hobbys:
+				Sport: 	<input type="checkbox" name="hobby[]" value="sport" >
+				Kino: 	<input type="checkbox" name="hobby[]" value="kino" >
+				PC: 	<input type="checkbox" name="hobby[]" value="pc" 	 >
+				Lesen: 	<input type="checkbox" name="hobby[]" value="lesen" >
+			</p>
+			
+			<p>Obst:
+				<select name="obst" >
+					<option>Apfel</option>
+					<option>Birne</option>
+					<option>Kirsche</option>
+				</select>
+			</p>
+		
+			<p><input type="button" onclick="check();"  value="BTN" >
+			</p>
+			
+
+		</form>
+
+		<div id="msg" ></div>
+	</body>
+</html>

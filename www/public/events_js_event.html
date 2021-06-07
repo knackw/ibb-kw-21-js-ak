@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>events event</title>
+		<script>
+			function check( ev )
+			{
+				document.getElementById("msg").innerHTML += ev.pageX + " " + ev.pageY + " " + ev.type + "<br>" ;
+			}
+			
+			function init()
+			{
+				// "ev" ist das event-Objket und wird dem Eventhandler automatisch übergeben
+				
+															// Diese anonyme Funktion ist der Eventhander
+				document.getElementById( "bild1" ).onclick = function(ev){ check( ev ) ; } ;
+				document.getElementById( "bild2" ).onmouseover = function(ev){ check( ev ) ; } ;
+				document.getElementById( "bild3" ).onmouseout = function(ev){ check( ev ) ; } ;
+			}
+			
+			window.onload = function() { init() ; } ;
+			
+
+		
+		</script>
+	</head>
+	<body>
+		<img id="bild1" src="../images/01.jpg" alt="a" >
+		<img id="bild2" src="../images/02.jpg" alt="b" >
+		<img id="bild3" src="../images/04.jpg" alt="c" >
+		
+		<div id="msg" ></div>
+	</body>
+</html>

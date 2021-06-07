@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#msg { position:absolute; top:10px; left:330px; }				
+			input:invalid {color : red ; border:3px solid red; }
+			input:out-of-range { color : orange ; }
+		</style>
+
+		<script>
+			function checkEmail()
+			{
+				//alert( "check" );
+				
+				const email = document.anmeldung.email ;
+				const msg = document.querySelector( "#msg" );
+				
+				/*
+					email.validationMessage
+					email.validity
+					email.willValidate
+					email.setCustomValidity( string )
+					email.checkValidity()
+				*/
+				
+				if( email.value == "" )
+				{
+					email.setCustomValidity( "Email nicht ok" );
+				}
+				
+				msg.innerHTML += "->" + email.validationMessage + "<br>" ;
+				
+			}
+			
+			function checkAlter()
+			{
+				const alter = document.anmeldung.alter ;
+				const msg = document.querySelector( "#msg" );
+				
+				alter.setCustomValidity( "" );
+
+				if( alter.validity.stepMismatch )
+				{
+					alter.setCustomValidity( "StepMismatch" );
+				}
+
+				msg.innerHTML += "->" + alter.validationMessage + "<br>" ;
+			}
+		
+		
+		
+			function init()
+			{
+				document.anmeldung.email.addEventListener( "change" , checkEmail ); 
+				document.anmeldung.alter.addEventListener( "change" , checkAlter ); 
+			}
+		
+			window.addEventListener( "load" , init );
+			
+		</script>
+		
+	</head>
+	<body>
+			<form name="anmeldung" action="weiter.php"   >
+		
+			<p>Anrede: 
+				Frau: <input type="radio" name="anrede" value="frau" required >
+				Herr: <input type="radio" name="anrede" value="herr" required  >
+				Firma: <input type="radio" name="anrede" value="firma" required >
+			</p>
+			
+			<p>Vorname: <input type="text" name="vorname" required  ></p>
+			<p>Nachname: <input type="text" name="nachname" required ></p>
+			<p>Ort: <input type="text" name="ort" pattern="[\w]{2,9}" ></p>
+			<p>Alter: <input type="number" name="alter" min="5" max="99" step="5" ></p>
+			<p>Email: <input type="text"  name="email"  ></p>
+			<p>Url: <input type="url" name="url" ></p>
+			<textarea></textarea>
+			<p>
+				Hobbys:
+				Sport: 	<input type="checkbox" name="hobby" value="sport">
+				Kino: 	<input type="checkbox" name="hobby" value="kino" >
+				PC: 	<input type="checkbox" name="hobby" value="pc" >
+				Lesen: 	<input type="checkbox" name="hobby" value="lesen" >
+			</p>
+			<p>
+				Obst:
+				<select name="obst" >
+					<option></option>
+					<option>Apfel</option>
+					<option >Birne</option>
+					<option>Kirsche</option>
+				</select>
+			</p>
+			<p>
+				<input type="button" name="senden" value="CHECK" >
+				<input type="submit" name="senden" value="SENDE" >
+				<input type="reset" name="reset" value="RESET" >
+				<button type="submit" formnovalidate name="immerSenden" >IMMER SENDEN</button>
+			</p>
+		</form>
+
+		<div id="msg" ></div>
+	</body>
+</html>

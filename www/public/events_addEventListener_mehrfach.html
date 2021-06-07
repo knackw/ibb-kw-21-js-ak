@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>events this</title>
+		<script>
+			function check( elem , nr )
+			{
+				document.getElementById("msg").innerHTML += elem.id + " " + elem.alt + " " + nr + "<br>";
+			}
+
+			function init()
+			{
+				document.getElementById( "bild1" ).addEventListener( "click" , function(){ check( this , 1 ) ; } ); 
+				document.getElementById( "bild1" ).addEventListener( "click" , function(){ check( this , 2 ) ; } );
+				document.getElementById( "bild1" ).addEventListener( "click" , function(){ check( this , 3 ) ; } );
+				document.getElementById( "bild1" ).onclick = function(){ check( this , 4 ) ; } ;
+				document.getElementById( "bild1" ).onclick = function(){ check( this , 5 ) ; } ; 
+				document.getElementById( "bild1" ).onclick = function(){ check( this , 6 ) ; } ;
+			}
+			
+			function init2()
+			{
+				alert( "test" );
+			}
+			
+			window.addEventListener( "load" , init );
+			window.addEventListener( "load" , init2 );
+		
+		</script>
+	</head>
+	<body>
+		<img id="bild1" src="../images/01.jpg" alt="a" >
+		<img id="bild2" src="../images/02.jpg" alt="b" >
+		<img id="bild3" src="../images/04.jpg" alt="c" >
+		
+		<div id="msg" ></div>
+		
+	</body>
+</html>

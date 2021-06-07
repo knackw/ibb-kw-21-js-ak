@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+		<script>
+		
+			function start()
+			{
+				document.getElementById( "audio" ).play();
+			}
+			
+			function setLowVolume()
+			{
+				document.getElementById('audio').volume = 0.3 ;
+				
+				// volume="0.2"  im audiotag geht nicht !!
+			}
+		
+		</script>
+	</head>
+	<body>
+		<audio id="audio"  src="../audio/Viva.mp3" type="audio/mpeg"  onloadeddata="setLowVolume()" >
+				
+				audio funktioniert nicht
+				
+		</audio>
+		
+		<button onclick="start()" >start</button>
+		
+	</body>
+</html>

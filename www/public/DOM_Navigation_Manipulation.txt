@@ -1,0 +1,42 @@
+		DOM-Scripting
+		
+			document.getElementById()
+			document.getElementsByName()[]
+			Element.getElementsByTagName()[]
+			document.getElementsByClassName()[]
+			Element.querySelector()
+			Element.querySelectorAll()[]
+		
+		
+		DOM-Navigation
+				
+			Node.childNodes[]
+			ParentNode.children[]
+			Node.nodeName
+			Node.nodeType
+			Node.firstChild
+			ParentNode.firstElementChild
+			Node.lastChild
+			ParentNode.lastElementChild
+			Node.nextSibling
+			Node.nextElementSibling
+			Node.previousSibling
+			Node.previousElementSibling
+			Node.parentNode
+			Node.parentElement
+			Node.ownerDocument
+			document.documentElement
+			
+		DOM-Manipulation
+		
+			document.createElement()
+			document.createTextNode()
+		
+			Element.setAttribute()
+			Element.getAttribute()
+			
+			Node.appendChild()
+			Node.insertBefore()
+			Node.replaceChild()
+			Node.removeChild()
+			Node.cloneNode()

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM Navigation</title>
+		<style></style>
+		<script>
+		
+		/*
+			Node  -> Verzweigungspunkt
+				
+				Elementknoten
+				Textknoten
+				Kommentarknoten
+				Dokumentknoten
+				Doctypeknoten
+		
+			document.getElementById()
+			document.getElementsByName()
+			document.getElementsByClassName()
+			Element.getElementsByTagName()
+			Element.querySelector()
+			Element.querySelectorAll()	
+				
+				
+			Element.classList
+		
+							.add()
+							.remove()
+							.toggle()
+							.contains() -> boolean
+							
+			Element.setAttribute( attr , value )
+			Element.getAttribute( attr )
+			Element.hasAttribute( attr ) 	-> boolean
+			Element.hasAttributes()			-> boolean
+			Element.removeAttribute( attr )
+			
+			DOM-Navigation
+		
+				childNodes
+				children
+				
+				nodeName
+				nodeType
+				firstChild
+				firstElementChild
+				lastChild
+				lastElementChild
+				nextSibling
+				nextElementSibling
+				previousSibling
+				previousElementSibling
+				parentNode
+				parentElement
+				
+				ownerDocument
+				documentElement
+			
+			*/
+		
+			function check()
+			{
+				const msg = document.getElementById( "msg" );
+				
+				// childNodes
+				
+				// Jedes Containerelement besitzt ein Array "childNodes"
+				//		mit ALLEN Kindknoten ( NodeList )
+				
+				var anzahl = document.getElementById("ctrls").childNodes.length ;
+				msg.innerHTML += "Anzahl childNodes : " + anzahl + "<br>" ;
+				
+				//document.childNodes[1].childNodes[2].childNodes[1].childNodes[1].innerText = "<a href='#'>EINS</a>" ;
+				//document.childNodes[1].childNodes[2].childNodes[1].childNodes[1].childNodes[0].nodeValue = "EINS" ;
+			
+			
+				// children
+					
+				// Jedes Containerelement besitzt ein Array "children"
+				//		mit ALLEN HTML-Kindknoten ( HTMLCollection )
+				
+				anzahl = document.getElementById( "ctrls" ).children.length ;
+				msg.innerHTML += "Anzahl children : " + anzahl + "<br>" ;
+				
+				//document.children[0].children[1].children[0].children[1].innerHTML = "ZWEI" ;
+				//document.children[0].children[1].children[0].children[1].firstChild.nodeValue = "ZWEI" ;
+				
+				//-----------------------------------------------------
+			
+			
+				const knoten = document.getElementById("ctrls");
+				
+				msg.innerHTML += "id : " + knoten.id + "<br>" ;						// DOM-Eigenschaft
+				msg.innerHTML += "id : " + knoten.getAttribute("id") + "<br>" ;		// HTML-Attribut
+				
+				msg.innerHTML += "class : " +  knoten.className + "<br>" ;
+				msg.innerHTML += "class : " +  knoten.getAttribute( "class" ) + "<br>" ;
+				msg.innerHTML += "class : " +  knoten.classList.contains( "abc" ) + "<hr>" ;
+				
+				msg.innerHTML += "cdefg : " +  knoten.cdefg + "<br>" ;
+				msg.innerHTML += "cdefg : " +  knoten.getAttribute( "cdefg" ) + "<br>" ;
+				
+				knoten.temp2 = "test2" ;
+				knoten.setAttribute( "temp3" , "test3" );	// nicht so schön
+				
+				msg.innerHTML += "temp2 : " +  knoten.temp2 + "<br>" ;
+				msg.innerHTML += "temp2 : " +  knoten.getAttribute( "temp2" ) + "<br>" ;	// NULL
+					
+				msg.innerHTML += "temp3 : " +  knoten.temp3 + "<br>" ;						// undefined
+				msg.innerHTML += "temp3 : " +  knoten.getAttribute( "temp3" ) + "<hr>" ;
+				
+				msg.innerHTML += "data-temp : " + knoten.dataset.temp + "<hr>" ;
+			
+				//-------------------------------------------------------------
+				
+				//  Weitere DOM-Eigenschaften
+			
+				// nodeName
+				
+				msg.innerHTML += "nodeName : " + knoten.nodeName + "<br>" ;
+				msg.innerHTML += "nodeName : " + knoten.childNodes[0].nodeName + "<br>" ;
+				msg.innerHTML += "nodeName : " + knoten.childNodes[1].nodeName + "<br>" ;
+				msg.innerHTML += "nodeName : " + knoten.childNodes[5].nodeName + "<br>" ;
+				msg.innerHTML += "nodeName : " + document.nodeName + "<br>" ;
+				msg.innerHTML += "nodeName : " + document.childNodes[0].nodeName + "<br>" ;
+				msg.innerHTML += "nodeName : " + document.childNodes[1].nodeName + "<hr>" ;
+				
+				// nodeType
+					
+				msg.innerHTML += "nodeType : " + knoten.nodeType + "<br>" ;
+				msg.innerHTML += "nodeType : " + knoten.childNodes[0].nodeType + "<br>" ;
+				msg.innerHTML += "nodeType : " + knoten.childNodes[1].nodeType + "<br>" ;
+				msg.innerHTML += "nodeType : " + knoten.childNodes[5].nodeType + "<br>" ;
+				msg.innerHTML += "nodeType : " + document.nodeType + "<br>" ;
+				msg.innerHTML += "nodeType : " + document.childNodes[0].nodeType + "<br>" ;
+				msg.innerHTML += "nodeType : " + document.childNodes[1].nodeType + "<hr>" ;
+			
+				// firstChild
+				
+				msg.innerHTML += "firstChild: " + knoten.firstChild.nodeName + "<br>" ;
+				msg.innerHTML += "firstElementChild: " + knoten.firstElementChild.nodeName + "<br>" ;
+				
+				// lastChild
+					
+				msg.innerHTML += "lastChild : " + knoten.lastChild.nodeName + "<br>" ;
+				msg.innerHTML += "lastElementChild : " + knoten.lastElementChild.nodeName + "<br>" ;
+				
+				// nextSibling
+					
+				msg.innerHTML += "nextSibling : " + knoten.nextSibling.nodeName + "<br>" ;
+				msg.innerHTML += "nextElementSibling : " + knoten.nextElementSibling.nodeName + "<br>" ;
+				
+				// previousSibling
+				
+				msg.innerHTML += "previousSibling : " + knoten.previousSibling.nodeName + "<br>" ;
+				msg.innerHTML += "previousElementSibling : " + knoten.previousElementSibling + "<br>" ;
+				
+				// parentNode
+					
+				msg.innerHTML += "parentNode : " + knoten.parentNode.nodeName + "<br>" ;
+				msg.innerHTML += "parentElement : " + knoten.parentElement.nodeName + "<br>" ;
+				
+				// ownerDocument
+					
+				msg.innerHTML += "ownerDocument : " + knoten.ownerDocument.nodeName + "<br>" ;
+				
+				// documentElement	-> <html>	(root)
+				
+				msg.innerHTML += "documentElement : " + document.documentElement.nodeName + "<br>" ;
+			}
+		
+			function clearNode()
+			{
+				var knoten = document.getElementById("ctrls").firstChild ;
+				var temp ;
+				
+				while( knoten != null )
+				{
+					temp = knoten.nextSibling ;
+					
+					//if( knoten.nodeType != 1 )
+					if( knoten.nodeType != Node.ELEMENT_NODE )
+					{
+						knoten.parentNode.removeChild( knoten );
+					}
+					knoten = temp ;
+				}
+			}
+		
+		</script>
+	</head>
+	<body>
+		<div id="ctrls" class="abc def" data-temp="abc" cdefg="test" >
+			<button onclick="check();" >eins</button>        
+			<button onclick="clearNode();" >zwei</button>  <!-- Kommentar -->
+			<button>drei</button>
+			<button>vi<b>e</b>r</button>
+		</div>
+		
+		<div id="msg" ></div>
+	</body>
+</html>

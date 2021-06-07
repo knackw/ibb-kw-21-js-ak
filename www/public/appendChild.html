@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM Manipulation - appendChild</title>
+		<style>
+			#btn5  { color : blue ; }
+		</style>
+		<script>
+			function append()
+			{
+				//var s = "<button id='btn5' >fünf</button>" ;
+				//document.getElementById("ctrls").innerHTML += s ;
+			
+				// falls das Element schon existiert -> return
+				if( document.getElementById("btn5") ) return;
+
+				// Hier soll das neue Element hinein
+				var knoten = document.getElementById( "ctrls" );
+				
+				// Hier erzeuge ich ein neues element
+				var newBtn = document.createElement( "button" );
+				
+				newBtn.setAttribute( "id" , "btn5" );
+				
+				// Hier erzeuge ich einen Textknoten
+				var txt = document.createTextNode( "fünf" );
+				
+				// der Textknoten wird in ds neue BUTTON-Element verschoben
+				newBtn.appendChild( txt );
+				
+				// das BUTTON-Element wird in das DIV-Element verschoben
+				knoten.appendChild( newBtn );
+			}
+		
+			function remove()
+			{
+				var btn = document.getElementById("btn5");
+				
+				if( !btn ) return;
+				
+				btn.parentNode.removeChild( btn );
+			}
+		
+		</script>
+	</head>
+	<body>
+		<div id="ctrls" >
+			<button onclick="append();" >append</button>
+			<button onclick="remove();" >zwei</button>
+			<button>drei</button>
+			<button>vier</button>
+		</div>
+		
+		<div id="msg" ></div>
+	</body>
+</html>

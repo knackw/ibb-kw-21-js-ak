@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+		
+		<script>
+			function weiter()
+			{
+				location.href= "http://www.google.de" ;
+			}
+		</script>
+	</head>
+	<body>
+		<script>
+		
+			// http://www.seitexy.de:80/path1/path2/index.html?vorname=otto&nachname=Walkes#anker1
+		
+		
+			document.write( "href: " , location.href , "<hr>" );			
+			
+			document.write( "hash: " , location.hash , "<br>" );			// #anker
+			document.write( "search: " , location.search , "<br>" )			// ?vorname=Otto&nachname=Walkes
+			document.write( "pathName; " , location.pathname , "<br>" );	// /path1/path2/index.html
+			document.write( "port: " , location.port , "<br>" );			// 80
+			document.write( "hostname: " , location.hostname , "<br>" );	// www.seitexy.de
+			document.write( "protocol: " , location.protocol , "<br>" );	// http:
+			
+			document.write( "origin: " , location.origin , "<br>" );	// http://www.seitexy.de
+			
+			//----------------------------------------------------------------------------------------------
+			
+			// location.search = "?vorname=Otto&nachname=Walkes"
+			// searchArray[0] = "vorname=Otto"
+			// searchArray[1] = "nachname=Walkes"
+			
+			var searchArray = location.search.slice( 1 ).split( "&" ) ;
+			
+			console.log( searchArray );
+			
+			for( var i = 0 ; i < searchArray.length ; i++ )
+			{
+				document.write( "i : " , i , " Inhalt: " , searchArray[i] , "<br>" );
+				var temp = searchArray[i].split( "=" );
+				document.write( temp[0] , " = " , temp[1] , "<br>" )
+			}
+			
+			
+			
+			
+		</script>
+		
+		<br>
+		
+		
+		<button onclick="weiter();" id="anker1" >weiter</button>
+		
+		<a href="http://www.google.de" >link</a>
+		
+		
+		
+	</body>
+</html>
